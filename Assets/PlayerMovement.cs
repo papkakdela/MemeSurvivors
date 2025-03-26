@@ -4,26 +4,21 @@ public class PlayerMovement : MonoBehaviour
 {
     Animator animator;
 
-    Vector2 initialPosition;
-
-    public InputManager inputManager;
+    float speed = 1;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
-        animator.SetBool("IsMoving", inputManager.movementDirection.magnitude != 0);
-        if (inputManager.movementDirection.x < 0)
+        animator.SetBool("IsMoving", G.joystick.isControlling);
+        if (!G.joystick.isControlling)
+            return;
+
+        var direction = G.joystick.direction;
+        if (direction.x < 0)
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
@@ -31,6 +26,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
-        transform.position += new Vector3(inputManager.movementDirection.x, inputManager.movementDirection.y) * Time.fixedDeltaTime;
+        transform.position += new Vector3(direction.x, direction.y) * Time.fixedDeltaTime * speed;
     }
 }
