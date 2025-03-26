@@ -14,6 +14,12 @@ public class CameraFollow : MonoBehaviour
     public Vector2 minBounds; // ћинимальные координаты (левый нижний угол)
     public Vector2 maxBounds; // ћаксимальные координаты (правый верхний угол)
 
+    private void Start()
+    {
+        if (target == null)
+            target = G.playerTransform;
+    }
+
     private void LateUpdate()
     {
         if (target == null)

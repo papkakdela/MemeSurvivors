@@ -4,7 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Animator animator;
 
-    float speed = 1;
+    float speed = 2;
 
     private void Awake()
     {
