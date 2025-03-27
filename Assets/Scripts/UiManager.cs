@@ -1,10 +1,27 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    [Header("Main Menu")]
+    [SerializeField] GameObject mainMenuWindow;
+    [SerializeField] Image characterImage;
+
+    [Header("Game Over Menu")]
     [SerializeField] GameObject gameOverWindow;
     [SerializeField] TMP_Text gameOverResultText;
+
+
+    public void ShowMainMenuWindow()
+    {
+        mainMenuWindow.SetActive(true);
+    }
+
+    public void HideMainMenuWindow()
+    {
+        mainMenuWindow.SetActive(false);
+    }
 
 
     public void ShowGameOver(int result)
@@ -16,5 +33,16 @@ public class UiManager : MonoBehaviour
     public void HideGameOver()
     {
         gameOverWindow.SetActive(false);
+    }
+
+    public void UpdateCharacterImage()
+    {
+        // TBD
+        // Character image.sprite = L.characters.characters[G.runSettings.charaacterId.GetComponent<SpriteRenderer>().image;
+    }
+
+    public void HideStartRunWindow()
+    {
+
     }
 }

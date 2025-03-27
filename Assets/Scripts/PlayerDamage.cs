@@ -44,4 +44,9 @@ public class PlayerDamage : MonoBehaviour
             print(health);
         }
     }
+
+    public bool IsAlive()
+    {
+        return health > 0;
+    }
 }

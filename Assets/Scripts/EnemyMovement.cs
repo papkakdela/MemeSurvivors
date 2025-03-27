@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (spawnTime > 0)
+        if (spawnTime > 0 || target == null)
         {
             spawnTime -= Time.fixedDeltaTime;
         }
