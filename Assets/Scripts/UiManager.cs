@@ -8,10 +8,23 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject mainMenuWindow;
     [SerializeField] Image characterImage;
 
+    [Header("Start Run")]
+    [SerializeField] GameObject startRunText;
+
     [Header("Game Over Menu")]
     [SerializeField] GameObject gameOverWindow;
     [SerializeField] TMP_Text gameOverResultText;
 
+
+    public void ShowStartRun()
+    {
+        startRunText.SetActive(true);
+    }
+
+    public void HideStartRun()
+    {
+        startRunText.SetActive(false);
+    }
 
     public void ShowMainMenuWindow()
     {
@@ -39,10 +52,5 @@ public class UiManager : MonoBehaviour
     {
         // TBD
         // Character image.sprite = L.characters.characters[G.runSettings.charaacterId.GetComponent<SpriteRenderer>().image;
-    }
-
-    public void HideStartRunWindow()
-    {
-
     }
 }

@@ -41,7 +41,7 @@ public class PlayerDamage : MonoBehaviour
         if (collisionObjects.Count > 0)
         {
             health -= 1;
-            print(health);
+            //print(health);
         }
     }
 

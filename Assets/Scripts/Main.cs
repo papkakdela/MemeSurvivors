@@ -8,19 +8,21 @@ public class Main : MonoBehaviour
     {
         // start game
         // spawn hero
+        StartCoroutine(StartNewGame());
+
     }
 
     IEnumerator StartNewGame() 
     {
         int selectedCharacterId = G.runSettings.characterId;
-        var character = Instantiate(L.characters.characters[selectedCharacterId]);
+        var character = Instantiate(L.characters.characters[selectedCharacterId], transform.position, Quaternion.identity);
         G.InitPlayer();
 
         yield return new WaitUntil(() => G.joystick.isControlling);
-        G.ui.HideStartRunWindow();
+        G.ui.HideStartRun();
 
-
-        var wave = StartCoroutine(G.enemySpawner.StartFirstWave());
+        while (G.playerDamage.IsAlive())
+            yield return StartCoroutine(G.enemySpawner.StartFirstWave());
         
 
 

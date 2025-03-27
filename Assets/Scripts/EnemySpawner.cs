@@ -29,7 +29,13 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject SpawnEnemyAtRandomPosition()
     {
-        return Instantiate(L.enemies.enemies[0]);
+        float angle = Random.Range(0, 2f * Mathf.PI);
+        float distance = Random.Range(minDistanceToPlayer, maxDistanceToPlayer);
+
+        Mathf.Sin(angle);
+        Mathf.Cos(angle);
+
+        return Instantiate(L.enemies.enemies[0], transform.position + new Vector3(Mathf.Sin(angle), Mathf.Cos(angle)) * distance, Quaternion.identity);
     }
 
     private void OnDrawGizmos()
