@@ -53,4 +53,16 @@ public class UiManager : MonoBehaviour
         // TBD
         // Character image.sprite = L.characters.characters[G.runSettings.charaacterId.GetComponent<SpriteRenderer>().image;
     }
+
+    public void ClickContinueButton()
+    {
+        // Destroy enemies
+        G.playerDamage.RestoreHealth();
+        HideGameOver();
+    }
+
+    public void ClickRestartButton()
+    {
+        HideGameOver();
+    }
 }

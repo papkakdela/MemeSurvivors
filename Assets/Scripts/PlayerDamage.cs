@@ -49,4 +49,9 @@ public class PlayerDamage : MonoBehaviour
     {
         return health > 0;
     }
+
+    public void RestoreHealth()
+    {
+        health = maxHealth;
+    }
 }

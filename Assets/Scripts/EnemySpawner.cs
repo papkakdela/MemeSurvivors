@@ -9,8 +9,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     float maxDistanceToPlayer;
 
+    [HideInInspector]
+    public bool isWaveInProgress = false;
+
     public IEnumerator StartFirstWave()
     {
+        isWaveInProgress = true;
         SpawnEnemyAtRandomPosition();
         SpawnEnemyAtRandomPosition();
         SpawnEnemyAtRandomPosition();
@@ -25,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemyAtRandomPosition();
         SpawnEnemyAtRandomPosition();
         SpawnEnemyAtRandomPosition();
+        isWaveInProgress = false;
     }
 
     GameObject SpawnEnemyAtRandomPosition()

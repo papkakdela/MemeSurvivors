@@ -6,13 +6,22 @@ public class PlayerMovement : MonoBehaviour
 
     float speed = 2;
 
+    PlayerDamage playerDamage;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        playerDamage = GetComponent<PlayerDamage>();
     }
 
     void FixedUpdate()
     {
+        if (!playerDamage.IsAlive())
+        {
+            animator.SetBool("IsMoving", false);
+            return;
+        }
+
         animator.SetBool("IsMoving", G.joystick.isControlling);
         if (!G.joystick.isControlling)
             return;
