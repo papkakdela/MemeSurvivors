@@ -14,7 +14,10 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (spawnTime > 0 || target == null)
+        if (target == null ||!G.playerDamage.IsAlive())
+            return;
+
+        if (spawnTime > 0)
         {
             spawnTime -= Time.fixedDeltaTime;
         }

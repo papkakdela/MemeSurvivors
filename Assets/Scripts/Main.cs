@@ -31,11 +31,32 @@ public class Main : MonoBehaviour
             yield return null;
         }
 
+        if (G.enemySpawner.isWaveInProgress)
+        {
+            StopCoroutine(wave);
+            G.enemySpawner.isWaveInProgress = false;
+        }
 
-        
         G.ui.ShowGameOver(10);
+
+
 
         // Show game over window
 
+    }
+
+    public void ContinueGame()
+    {
+        //Destroy enemies
+        G.playerDamage.RestoreHealth();
+        print("continue");
+    }
+
+    public void RestartGame()
+    {
+        print("restart");
+        // clear enemies
+        // destroy character
+        // start coroutine StartNewGame()
     }
 }

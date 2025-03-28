@@ -56,13 +56,13 @@ public class UiManager : MonoBehaviour
 
     public void ClickContinueButton()
     {
-        // Destroy enemies
-        G.playerDamage.RestoreHealth();
+        G.main.ContinueGame();
         HideGameOver();
     }
 
     public void ClickRestartButton()
     {
+        G.main.RestartGame();
         HideGameOver();
     }
 }

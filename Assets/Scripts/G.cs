@@ -9,6 +9,8 @@ public class G : MonoBehaviour
     public static EnemySpawner enemySpawner;
     public static RunSettings runSettings;
 
+    public static CameraFollow cam;
+
     // Run scope
     public static Transform playerTransform;
     public static PlayerDamage playerDamage;
@@ -20,6 +22,7 @@ public class G : MonoBehaviour
         main = GetComponent<Main>();
         enemySpawner = GetComponent<EnemySpawner>();
         runSettings = GetComponent<RunSettings>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
     }
 
     public static void InitPlayer()
@@ -27,6 +30,7 @@ public class G : MonoBehaviour
         var playerGO = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerGO.transform;
         playerDamage = playerGO.GetComponent<PlayerDamage>();
+        cam.StartFollow();
     }
 
     private void FixedUpdate()

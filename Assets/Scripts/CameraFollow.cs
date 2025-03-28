@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [Header("Target Settings")]
-    public Transform target; // ÷ель, за которой следует камера (ваш персонаж)
+    //[Header("Target Settings")]
+    Transform target; // ÷ель, за которой следует камера (ваш персонаж)
 
     [Header("Smooth Settings")]
     public float smoothSpeed = 0.125f; // —корость плавного перемещени€
@@ -14,10 +14,9 @@ public class CameraFollow : MonoBehaviour
     public Vector2 minBounds; // ћинимальные координаты (левый нижний угол)
     public Vector2 maxBounds; // ћаксимальные координаты (правый верхний угол)
 
-    private void Start()
+    public void StartFollow()
     {
-        if (target == null)
-            target = G.playerTransform;
+        target = G.playerTransform;
     }
 
     private void LateUpdate()
