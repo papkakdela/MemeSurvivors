@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,23 +14,25 @@ public class EnemySpawner : MonoBehaviour
     [HideInInspector]
     public bool isWaveInProgress = false;
 
+    List<GameObject> spawnedEnemies = new List<GameObject>();
+
     public IEnumerator StartFirstWave()
     {
         isWaveInProgress = true;
-        SpawnEnemyAtRandomPosition();
-        SpawnEnemyAtRandomPosition();
-        SpawnEnemyAtRandomPosition();
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
         yield return new WaitForSeconds(3.0f);
 
-        SpawnEnemyAtRandomPosition();
-        SpawnEnemyAtRandomPosition();
-        SpawnEnemyAtRandomPosition();
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
 
         yield return new WaitForSeconds(2.0f);
 
-        SpawnEnemyAtRandomPosition();
-        SpawnEnemyAtRandomPosition();
-        SpawnEnemyAtRandomPosition();
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
+        spawnedEnemies.Add(SpawnEnemyAtRandomPosition());
         isWaveInProgress = false;
     }
 
@@ -49,5 +53,38 @@ public class EnemySpawner : MonoBehaviour
         Handles.color = Color.green;
         Handles.DrawWireDisc(origin, new Vector3(0, 0, 1), minDistanceToPlayer);
         Handles.DrawWireDisc(origin, new Vector3(0, 0, 1), maxDistanceToPlayer);
+    }
+
+    public Transform GetClosestEnemy()
+    {
+        if (spawnedEnemies.Count == 0)
+            return null;
+
+        static float getDistance(Vector3 from, Vector3 to)
+        {
+            return (from - to).magnitude;
+        }
+
+        var player = G.playerTransform;
+        var closestEnemy = spawnedEnemies[0].transform;
+        var closestDist = getDistance(closestEnemy.position, player.position);
+
+        
+        foreach (var enemy in spawnedEnemies)
+        {
+            var enemyDist = getDistance(enemy.transform.position, player.position);
+            if (enemyDist < closestDist)
+            {
+                closestDist = enemyDist;
+                closestEnemy = enemy.transform;
+            }
+        }
+
+        return closestEnemy;
+    }
+
+    public bool enemyExists()
+    {
+        return spawnedEnemies.Count > 0;
     }
 }

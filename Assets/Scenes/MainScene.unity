@@ -1508,6 +1508,7 @@ GameObject:
   - component: {fileID: 837308807}
   - component: {fileID: 837308806}
   - component: {fileID: 837308805}
+  - component: {fileID: 837308808}
   m_Layer: 0
   m_Name: Library
   m_TagString: Untagged
@@ -1570,6 +1571,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc139409c61e4545a8841bdb1918d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &837308808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837308803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1764fa6d458089749af58e30156be1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 3847913663495600417, guid: ba4ab45064ce16b449c6472c90b784a1, type: 3}
+  fireballSpeed: 1
+  fireballScale: 1
 --- !u!1 &1122719196
 GameObject:
   m_ObjectHideFlags: 0

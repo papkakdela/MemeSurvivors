@@ -19,9 +19,10 @@ public class Main : MonoBehaviour
         int selectedCharacterId = G.runSettings.characterId;
         character = Instantiate(L.characters.characters[selectedCharacterId], transform.position, Quaternion.identity);
         G.InitPlayer();
-
+        
         yield return new WaitUntil(() => G.joystick.isControlling);
         G.ui.HideStartRun();
+        G.playerSpells.InitSpells();
 
         Coroutine wave = null;
         while (G.playerDamage.IsAlive())

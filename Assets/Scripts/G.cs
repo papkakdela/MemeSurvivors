@@ -14,6 +14,7 @@ public class G : MonoBehaviour
     // Run scope
     public static Transform playerTransform;
     public static PlayerDamage playerDamage;
+    public static PlayerSpells playerSpells;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class G : MonoBehaviour
         var playerGO = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerGO.transform;
         playerDamage = playerGO.GetComponent<PlayerDamage>();
+        playerSpells = playerGO.GetComponent<PlayerSpells>();
         cam.StartFollow();
     }
 

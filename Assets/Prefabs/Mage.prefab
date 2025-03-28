@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 8527466699922469877}
   - component: {fileID: 8499056376908243828}
   - component: {fileID: 7246549830554872721}
+  - component: {fileID: 150876989046414963}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Player
@@ -363,3 +364,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &150876989046414963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041814457326581146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77461e83d879acc4587ed608abbf2f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

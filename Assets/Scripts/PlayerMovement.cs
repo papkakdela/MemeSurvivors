@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         playerDamage = GetComponent<PlayerDamage>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!playerDamage.IsAlive())
         {
@@ -35,6 +35,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
-        transform.position += new Vector3(direction.x, direction.y) * Time.fixedDeltaTime * speed;
+        transform.position += new Vector3(direction.x, direction.y) * Time.deltaTime * speed;
     }
 }
