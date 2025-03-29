@@ -10,6 +10,7 @@ public class Fireball : MonoBehaviour
     {
         var target = G.enemySpawner.GetClosestEnemy();
         StartCoroutine(Go(target.position - transform.position));
+        
     }
 
     IEnumerator Go(Vector3 direction)
@@ -19,10 +20,15 @@ public class Fireball : MonoBehaviour
 
         Vector3 targetPosition = transform.position + direction * maxDistance;
 
-        while (transform.position != targetPosition)
+        float distance = 0;
+
+        while (distance < maxDistance)
         {
-            transform.position += direction * speed * Time.deltaTime;
+            var movement = direction * speed * Time.deltaTime;
+            transform.position += movement;
+            distance += movement.magnitude;
             yield return null;
         }
+        Destroy(gameObject);
     }
 }

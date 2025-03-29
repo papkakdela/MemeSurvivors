@@ -15,6 +15,12 @@ public class EnemySpawner : MonoBehaviour
     public bool isWaveInProgress = false;
 
     List<GameObject> spawnedEnemies = new List<GameObject>();
+    List<GameObject> enemiesToRemove = new List<GameObject>();
+
+    private void Start()
+    {
+        StartCoroutine(TrashCollector());
+    }
 
     public IEnumerator StartFirstWave()
     {
@@ -86,5 +92,28 @@ public class EnemySpawner : MonoBehaviour
     public bool enemyExists()
     {
         return spawnedEnemies.Count > 0;
+    }
+
+    public void RemoveEnemyFromActiveList(GameObject i_enemy)
+    {
+        spawnedEnemies.Remove(i_enemy);
+    }
+
+    public void AddEnemyToTrash(GameObject i_enemy)
+    {
+        enemiesToRemove.Add(i_enemy);
+    }
+
+    public IEnumerator TrashCollector()
+    {
+        while (true)
+        {
+            foreach (var enemy in enemiesToRemove)
+            {
+                Destroy(enemy);
+            }
+            enemiesToRemove.Clear();
+            yield return new WaitForSeconds(5);
+        }
     }
 }
